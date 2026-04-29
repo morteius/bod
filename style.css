@@ -214,7 +214,8 @@ body {
 
 .letter-box {
   position: absolute;
-  top: 18%;
+  top: 50%;
+  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -236,7 +237,7 @@ body {
 }
 
 .letter-overlay.show .letter-box {
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
@@ -320,7 +321,7 @@ body {
 }
 
 .gift-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(8px);

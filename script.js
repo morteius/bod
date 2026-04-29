@@ -170,7 +170,7 @@ musicBox.addEventListener('click', (ev) => {
 });
 
 // ---------- AGE CALCULATOR ----------
-const birthDate = new Date('2000-04-29');a
+const birthDate = new Date('2000-04-29');
 const today = new Date();
 let age = today.getFullYear() - birthDate.getFullYear();
 const hasHadBirthday =
@@ -180,6 +180,20 @@ if (!hasHadBirthday) age--;
 document.querySelectorAll(".card").forEach(card => {
   if (card.dataset.message.includes("{age}")) {
     card.dataset.message = card.dataset.message.replace("{age}", age);
+  }
+});
+
+const giftOverlay = document.querySelector('.gift-overlay');
+
+giftBox.addEventListener('click', (ev) => {
+  ev.stopPropagation();
+  giftBox.classList.toggle('open');
+  if (giftOverlay) {
+    giftOverlay.classList.add('show');
+    giftOverlay.addEventListener('click', () => {
+      giftOverlay.classList.remove('show');
+      giftBox.classList.remove('open');
+    }, { once: true });
   }
 });
 
@@ -200,9 +214,8 @@ document.querySelector('.camera').addEventListener('click', async () => {
   cameraWindow.classList.add('show');
 
   try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
     cameraFeed.srcObject = stream;
-    cameraFeed.style.transform = "scaleX(-1)"; // mirror camera
     await cameraFeed.play();
   } catch (err) {
     console.error("Camera access error:", err);
