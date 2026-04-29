@@ -240,7 +240,7 @@ captureBtn.addEventListener('click', () => {
   const photoSrc = photoCanvas.toDataURL('image/png');
   capturedPhotos.push(photoSrc);
 
-  // Only show 1 thumbnail
+  // only show 1 thumbnail
   thumbnailBar.innerHTML = ''; // clear old one
   const latestThumb = document.createElement('img');
   latestThumb.src = photoSrc;
@@ -249,7 +249,7 @@ captureBtn.addEventListener('click', () => {
   latestThumb.addEventListener('click', () => openGallery());
 });
 
-// Gallery View
+// gallery View
 function openGallery() {
   const galleryOverlay = document.createElement('div');
   galleryOverlay.classList.add('gift-overlay', 'show');
